@@ -49,3 +49,7 @@ input[type='text'] {
 .image {
 	padding: 0.2rem;
 }
+
+.image:hover {
+	opacity: 60%;
+}
