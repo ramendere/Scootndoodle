@@ -32,6 +32,7 @@ export default class Navigation extends React.Component {
                             offset={-15}
                             duration= {500}
                         >Contact Us</Link>
+                        <NavLink className='d-inline p-2 text-white' to='/forum' style={{ textDecoration: 'none' }}>Forum</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

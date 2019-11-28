@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import Container from 'react-bootstrap/Container'
 import Navigation from "./components/Navigation/Navigation"
 import Section from "./components/Navigation/Section"
+import Forum from "./components/Forum/Forum"
 
 import './App.css'
 
@@ -20,6 +21,7 @@ const App = () => {
           <Redirect to="/Home" />
         </Route>
         <Route exact path='/Shop' component={Shop} />
+        <Route exact path='/forum' component={Forum} />
         <Section
           title="Media"
           subtitle=''
