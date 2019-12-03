@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPosts, savePost, deletePost } from '../Actions/PostActions';
 import { Field, reduxForm, reset } from 'redux-form';
-import '../Styles/App.css';
+import '../Styles/Forum.css';
 import _ from 'lodash';
 import PostCard from '../Components/PostCard';
 import { getUser, logout } from '../Actions/UserActions';

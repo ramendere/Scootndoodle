@@ -1,8 +1,7 @@
-import { FETCH_POSTS } from '../Actions/PostActions';
-
+import { GET_USER } from '../Actions/UserActions';
 export default function (state = {}, action) {
   switch (action.type) {
-    case FETCH_POSTS:
+    case GET_USER:
       return action.payload;
     default:
       return state;

@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Link from 'react-router-dom/es/Link';
 import PostCard from '../Components/PostCard';
-import SubmitComment from './SubmitComment';
-import _ from 'lodash';
+import Link from 'react-router-dom/es/Link';
+import { deletePost} from '../Actions/PostActions';
+import AddComment from './AddComment';
 import Comment from '../Components/Comment';
+import SubmitComment from './SubmitComment'
+import _ from 'lodash';
 
 class PostDetail extends Component {
   renderComments() {
-    const { post } = this.props;
-    return _.map(post.comments, (comment, key) => {
-      return (
-        <Comment key={key} id={key}>
-          {comment.content}
-        </Comment>
-      );
+    return _.map(this.props.post.comments, (comment, key) => {
+      return <Comment key={key} body={comment.content} id={key} delete={comment.uid === this.props.user.uid}
+                      deleteComment={() => {
+                        this.props.deleteComment(this.props.match.params.id, key);
+                      }}/>;
     });
+  }
+
+  componentWillMount() {
+    const { post, history } = this.props;
+    if (post === undefined || post === null) {
+      history.replace('/');
+    }
   }
 
   render() {
@@ -41,7 +48,7 @@ class PostDetail extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  return { post: state.posts[ownProps.match.params.id], uid: state.user.uid };
+  return { post: state.posts[ownProps.match.params.id], user: state.user, posts: state.posts };
 }
 
-export default connect(mapStateToProps)(PostDetail);
+export default connect(mapStateToProps, { deletePost})(PostDetail);
