@@ -1,16 +1,14 @@
 import React from 'react';
 import { Route, Switch, Redirect  } from 'react-router-dom';
 import { Home } from "./views/Home/Home"
-import { Shop } from './views/Shop/Shop'
-import Media   from "./components/Media/Media"
 import NotFound from "./views/NotFound"
-import Footer from './components/Footer/Footer';
-import Container from 'react-bootstrap/Container'
-import Navigation from "./components/Navigation/Navigation"
 import Section from "./components/Navigation/Section"
 import ListPosts from "./components/Forum/Containers/ListPosts"
 
 import './App.css'
+import Cart from "./components/Cart/Cart";
+import Congrats from "./views/Shop/Congrats";
+import ShopPreview from "./components/ShopPreview/ShopPreview";
 
 
 const App = () => {
@@ -20,8 +18,10 @@ const App = () => {
         <Route exact path="/">
           <Redirect to="/Home" />
         </Route>
-        <Route exact path='/Shop' component={Shop} />
-        <Route exact path='/forum' component={ListPosts} />
+        <Route exact path='/Cart' component={Cart} />
+        <Route exact path='/Success' component={Congrats} />
+        <Route exact path='/ShopPreview' component={ShopPreview} />
+        <Route exact path='/Forum' component={ListPosts} />
         {/* <Section
           title="Media"
           subtitle=''
@@ -31,6 +31,6 @@ const App = () => {
         <Route component={NotFound}/>
       </Switch>
   );
-}
+};
 
 export default App;
