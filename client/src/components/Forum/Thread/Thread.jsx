@@ -41,12 +41,12 @@ class Thread extends Component {
     render() {
         return (
           <div>
-            { this.state.posts.map((postBody, idx) => {
+              <PostEditor addPost={this.addPost}/>
+            { this.state.posts.slice(0).reverse().map((postBody, idx) => {
                 return (
                   <Post key={idx} postBody={postBody}/>
                 )
               }) }
-            <PostEditor addPost={this.addPost}/>
           </div>
         );
     }
