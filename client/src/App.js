@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect  } from 'react-router-dom';
 import { Home } from "./views/Home/Home"
-import  Shop  from './views/Shop/Shop'
+import  Shop from './views/Shop/Shop'
 import Media   from "./components/Media/Media"
 import NotFound from "./views/NotFound"
 import Footer from './components/Footer/Footer';
@@ -31,8 +31,7 @@ const App = () => {
           <Redirect to="/Home" />
         </Route>
         <Route exact path='/Shop' component={Shop} />
-        <Route exact path='/AdminPortal' component={AdminPortal} />
-        <Route exact path='/Orders' component={Orders} />
+        <Route exact path='/AdminPortal' component={Orders} />
         <Route exact path='/PayTest' component={PaymentTest} />
         <Route exact path='/HippoController' component={HippoController} />
         <Route exact path='/CartController' component={CarController} />
