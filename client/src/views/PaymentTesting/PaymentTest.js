@@ -1,111 +1,72 @@
-import React from 'react'
-import Container from 'react-bootstrap/Container'
-import Cards from 'react-credit-cards'
-import 'react-credit-cards/es/styles-compiled.css'
-import './PaymentTest.css'
-import StripeCheckout from 'react-stripe-checkout';
-import axios from 'axios'
-
-class PaymentTest extends React.Component {
-    state = {
-            cvc: '',
-            expiry: '',
-            focus: '',
-            name: '',
-            number: '',
-        };
-
-    handleInputFocus = (e) => {
-        this.setState({ focus: e.target.name });
-    }
-
-    handleInputChange = (e) => {
-        const { name, value } = e.target;
-        this.setState({ [name]: value });
-    }
-    handleSubmit(event) {
-        event.preventDefault();
-        const data = new FormData(event.target);
-        fetch('/Success', {
-            method: 'POST',
-            body: data,
-        });
-    }
-
-    async handleToken(token) {
-        const pay = await axios.post('/api/payment', token)
-    }
-
-    onToken = (token, addresses) => {
-        this.handleToken(token)
-        // TODO: Send the token information and any other
-        // relevant information to your payment process
-        // server, wait for the response, and update the UI
-        // accordingly. How this is done is up to you. Using
-        // XHR, fetch, or a GraphQL mutation is typical.
-    };
-    
-    render() {
-        console.log(process.env.STRIPE_PUBLISHABLE_KEY);
-        return (
-            <StripeCheckout
-                amount="995"
-                billingAddress
-                description="Dextedoodle Therepeutic Tool"
-                locale="auto"
-                name="Dexte"
-                stripeKey='pk_test_1tLXq8tyKXWxDrUC1dJtkLVE00DaMRX9Ur'
-                token={this.onToken}
-                zipCode
-            />
-            // <div id='PaymentForm'>
-            //     <Cards 
-            //         cvc={this.state.cvc}
-            //         expiry={this.state.expiry}
-            //         focused={this.state.focus}
-            //         name={this.state.name}
-            //         number={this.state.number}
-            //     />
-            //     <form onSubmit={this.handleSubmit}>
-            //         <input id={'CardNum'}
-            //             type='tel'
-            //             name='number'
-            //             placeholder='Card Number'
-            //             pattern='[\d| ]{16,22}'
-            //             onChange={this.handleInputChange}
-            //             onFocus={this.handleInputFocus}
-            //         />
-            //         <a><br/></a>
-            //         <input id={'name'}
-            //             type='tel'
-            //             name='name'
-            //             placeholder='Name'
-            //             onChange={this.handleInputChange}
-            //             onFocus={this.handleInputFocus}
-            //         />
-            //         <a><br/></a>
-            //         <input id={'expiry'}
-            //             type='teli'
-            //             name='expiry'
-            //             pattern='\d\d/\d\d'
-            //             placeholder='Valid thru'
-            //             onChange={this.handleInputChange}
-            //             onFocus={this.handleInputFocus}
-            //         />
-            //         <input id={'cvc'}
-            //             type='teli'
-            //             name='cvc'
-            //             placeholder='CVC'
-            //             pattern='\d{3,4}'
-            //             onChange={this.handleInputChange}
-            //             onFocus={this.handleInputFocus}
-            //         />
-            //         <a><br/></a>
-            //         <button className={'button'}><span>Submit</span></button>
-            //     </form>
-            // </div>
-        )
-    }
-}
-
-export default PaymentTest
+// import React from 'react'
+// import Container from 'react-bootstrap/Container'
+// import './PaymentTesting.css'
+// // import StripeCheckout from 'react-stripe-checkout';
+// ​
+// // const CLIENT = {
+// //     sandbox: 'AUm1Ey3myi5PKQFlWRUmJTzRrMN1KrD45lOLYoyAxdn-5A8cKaIr8XhzYkVx9C8QJFxsJNAqqJ0sRKXs',
+// //     production: 'xxxxxxxxx',
+// // };
+// let total = 995;
+// ​
+// class PaymentTest extends React.Component {
+//     onToken = (token, addresses) => {
+// ​
+//     };
+//     render() {
+// ​
+//         return(
+//             <Container className = 'container'>
+//                 <div>
+//                     <nav className='navBar'>
+//                         <ol className="breadcrumb">
+//                             <li className="breadcrumb-item"><a href={"/Home"}>Home</a></li>
+//                             <li className="breadcrumb-item "><a href={"/ShopPreview"}>Shop</a></li>
+//                             <li className="breadcrumb-item active"><a href="#">Cart</a></li>
+//                         </ol>
+//                     </nav>
+//                     <h1 className='color'>
+//                         Your Cart
+//                     </h1>
+//                     <hr/>
+// ​
+//                     <table className="table table-sm">
+// ​
+//                         <tbody>
+//                         <tr>
+// ​
+//                             <th>Product</th>
+//                             <th>Color</th>
+//                             <th>Size</th>
+//                             <th>Quantity</th>
+//                             <th>Price</th>
+//                         </tr>
+//                         <tr>
+//                             <td scope="row">Hippo</td>
+//                             <td>Green</td>
+//                             <td>Medium</td>
+//                             <td>1</td>
+//                             <td>9.95</td>
+//                         </tr>
+// ​
+// ​
+//                         </tbody>
+//                     </table>
+                    
+//                     <StripeCheckout
+//                        amount={total}
+//                        billingAddress
+//                        description="DexteDoodle Therapeutic Tool"
+//                        locale="auto"
+//                        name="DexteDoode.com"
+//                        stripeKey="pk_test_1tLXq8tyKXWxDrUC1dJtkLVE00DaMRX9Ur"
+//                        token={this.onToken}
+//                        zipCode
+//                     />
+//                     <hr/>
+//                 </div>
+//             </Container>
+//         );
+//     };
+// }
+// export default PaymentTest;

@@ -20,6 +20,7 @@ import CarController from './views/Shop/Cart/Product/CarController';
 import mainCart from './views/Shop/Cart/mainCart';
 import CartList from './views/Shop/Cart/Product/product-list.component'
 //import {CartOverview} from "./Shop/Cart/CartOverview"
+import CartView from "./views/PaymentTesting/CartView"
 
 
 
@@ -32,9 +33,9 @@ const App = () => {
         </Route>
         <Route exact path='/Shop' component={Shop} />
         <Route exact path='/AdminPortal' component={Orders} />
-        <Route exact path='/PayTest' component={PaymentTest} />
+        <Route exact path='/Payment' component={CartView} />
         <Route exact path='/HippoController' component={HippoController} />
-        <Route exact path='/CartController' component={CarController} />
+        <Route exact path='/CarController' component={CarController} />
         <Route exact path='/create-product' component={mainCart} />
         <Route exact path='/product-list' component={CartList} />
         <Route component={NotFound}/>
