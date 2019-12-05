@@ -70,7 +70,7 @@ export default class CartList extends Component {
           <div class="col-md-3">
 			<CartOverview/>
 			<div class="text-center">
-			<Link to="/CustomerInfo">
+			<Link to="/payment">
   <button className="add-to-cart btn btn-default" type="button">Proceed to Order</button>
   </Link>
   </div>

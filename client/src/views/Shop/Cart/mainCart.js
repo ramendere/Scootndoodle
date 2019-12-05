@@ -89,7 +89,7 @@ export default class mainCart extends Component {
 		<div class="col-md-3">
 			<CartOverview/>
 			<div class="text-center">
-			<Link to="/CartList">
+			<Link to="/product-list">
   <button className="add-to-cart btn btn-default" type="button">Proceed to Cart</button>
   </Link>
 		
