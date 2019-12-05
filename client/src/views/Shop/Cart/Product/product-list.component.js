@@ -18,7 +18,7 @@ export default class CartList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/products/')
+    axios.get('http://localhost:5000/products/')
       .then(res => {
         this.setState({
           products: res.data
