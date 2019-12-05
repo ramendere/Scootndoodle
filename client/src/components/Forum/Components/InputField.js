@@ -1,7 +1,10 @@
 import React from 'react';
+
+//used to check for vowel to see whether to use "a" or "an"
 function isVowel(char) {
   return /^[aeiou]$/.test(char.toLowerCase());
 }
+
 const InputField = (props) => {
   return (
     <div className="form-group row">

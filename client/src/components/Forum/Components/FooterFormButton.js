@@ -1,16 +1,18 @@
 import React from 'react';
-import '../Styles/Forum.css'
+import { browserHistory } from 'react-router-dom';
 
-const FooterButton = (props) => {
-  const { submitLabel, otherLabel, goToLink, history } = props;
+const FooterButtons = (props) => {
+  const { submitLabel, otherLabel, goToLink } = props;
   return (
     <div className="d-flex justify-content-between">
-      <button type="submit" className="btn btn-primary">{submitLabel}</button>
+      <button type="submit" className="btn btn-primary">{submitLabel || 'Submit'}</button>
       <button type="button" className="btn btn-info" onClick={() => {
-        history.push(goToLink);
-      }}>{otherLabel}</button>
+        props.history.push(goToLink || "/Forum");
+      }}>
+        { otherLabel || 'Go back'}
+      </button>
     </div>
   );
 };
 
-export default FooterButton;
+export default FooterButtons;

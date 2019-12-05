@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import PostCard from '../Components/PostCard';
 import SimpleBox from '../Components/SimpleBox';
 import InputField from '../Components/InputField';
 import FooterFormButton from '../Components/FooterFormButton';
-import { login, getUser, googleLogin, twitterLogin } from '../Actions/UserActions';
+import { login, getUser } from '../Actions/UserActions';
 import { connect } from 'react-redux';
 import ErrorAlert from '../Components/ErrorAlert';
-import SocialMediaLogin from '../Components/SocialMediaLogin';
-import { errStyle } from '../Helpers/ReduxFormValidation';
+
 
 class Login extends Component {
   constructor(props) {
@@ -19,17 +19,14 @@ class Login extends Component {
   }
 
   componentWillMount() {
-    if (this.props.user !== null) {
-      this.props.history.push('/');
-    }
-  }
-  
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.user !== null) {
-      nextProps.history.push('/');
-    }
+    this.props.getUser();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.user.email !== undefined) {
+      this.props.history.push('/Forum');
+    }
+  }
 
   submitLogin(event) {
     event.preventDefault();
@@ -41,10 +38,14 @@ class Login extends Component {
   }
 
   renderBody() {
+    const errStyle = {
+      borderColor: 'red'
+    };
+
     return (
       <form onSubmit={event => { this.submitLogin(event);}}>
         <div>
-          <InputField id="email" type="text" label="Email"
+          <InputField id="email" type="email" label="Email"
                       inputAction={(event) => this.setState({ email: event.target.value })}
                       style={this.state.error ? errStyle : null}
           />
@@ -54,9 +55,8 @@ class Login extends Component {
           />
           {this.state.error && <ErrorAlert>Your username/password is incorrect</ErrorAlert>}
           <FooterFormButton submitLabel="Sign in" otherLabel="Create Account"
-                            goToLink="/CreateAccount" {...this.props}
+                            goToLink="/Forum/CreateAccount" {...this.props}
           />
-          <SocialMediaLogin {...this.props} />
         </div>
       </form>
     );
@@ -71,8 +71,8 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return { user: state.user };
 }
 
-export default connect(mapStateToProps, { login, getUser, googleLogin, twitterLogin })(Login);
+export default connect(mapStateToProps, { login, getUser })(Login);

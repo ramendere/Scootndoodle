@@ -3,7 +3,7 @@ import { Route, Switch, Redirect  } from 'react-router-dom';
 import { Home } from "./views/Home/Home"
 import NotFound from "./views/NotFound"
 import Section from "./components/Navigation/Section"
-import ListPosts from "./components/Forum/Containers/ListPosts"
+//import ListPosts from "./components/Forum/Containers/ListPosts"
 
 import './App.css'
 import Cart from "./components/Cart/Cart";
@@ -21,7 +21,9 @@ const App = () => {
         <Route exact path='/Cart' component={Cart} />
         <Route exact path='/Success' component={Congrats} />
         <Route exact path='/ShopPreview' component={ShopPreview} />
-        <Route exact path='/Forum' component={ListPosts} />
+        <Route exact path='/Forum' />
+        <Route exact path='/Forum/Login' />
+        <Route exact path='/Forum/CreateAccount' />
         {/* <Section
           title="Media"
           subtitle=''

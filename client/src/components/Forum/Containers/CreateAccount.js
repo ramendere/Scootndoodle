@@ -5,7 +5,6 @@ import SimpleBox from '../Components/SimpleBox';
 import { createAccount } from '../Actions/UserActions';
 import { connect } from 'react-redux';
 import ErrorAlert from '../Components/ErrorAlert';
-import { errStyle } from '../Helpers/ReduxFormValidation';
 
 class CreateAccount extends Component {
   constructor(props) {
@@ -44,7 +43,7 @@ class CreateAccount extends Component {
       return;
     }
     this.props.createAccount(this.state.email, this.state.password).then(() => {
-      this.props.history.replace('/');
+      this.props.history.replace('/Forum');
     }).catch(err => {
       this.setState({
         error: err.message
@@ -53,10 +52,13 @@ class CreateAccount extends Component {
   }
 
   renderBody() {
+    const errStyle = {
+      borderColor: 'red'
+    };
     return (
       <div>
         <form onSubmit={(event) => this.submitAccount(event)}>
-          <InputField id="email" type="text" label="Email"
+          <InputField id="email" type="email" label="Email"
                       inputAction={(event) => this.setState({ email: event.target.value })}
                       style={this.state.error ? errStyle : null }/>
           <InputField id="password" type="password" label="Password"
@@ -68,7 +70,7 @@ class CreateAccount extends Component {
           {this.state.error && <ErrorAlert>
             {this.state.error}
           </ErrorAlert>}
-          <FooterFormButton submitLabel="Create Account" otherLabel="Go back" goToLink="/Login" {...this.props}/>
+          <FooterFormButton submitLabel="Create Account" otherLabel="Go back" goToLink="/Forum/Login" {...this.props}/>
         </form>
       </div>
     );

@@ -5,35 +5,29 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
-import reducers from './components/Forum/Reducers/index';
-import { Provider } from 'react-redux';
-import ListPosts from './components/Forum/Containers/ListPosts';
-import Login from './components/Forum/Containers/Login';
-import CreateAccount from './components/Forum/Containers/CreateAccount';
-import LoadingComponent from './components/Forum/Containers/LoadingComponent';
-import AuthenticatedComponent from './components/Forum/Containers/AuthenticatedComponent';
-import PostDetail from './components/Forum/Containers/PostDetail';
+import registerServiceWorker from './components/Forum/registerServiceWorker'
+import { applyMiddleware, createStore } from 'redux'
+import thunk from 'redux-thunk'
+import reducers from './components/Forum/Reducers/index'
+import { Provider } from 'react-redux'
+import ListPosts from './components/Forum/Containers/ListPosts'
+import Login from './components/Forum/Containers/Login'
+import CreateAccount from './components/Forum/Containers/CreateAccount'
+
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 ReactDOM.render(
+    <Provider store={createStoreWithMiddleware(reducers)}>
     <Router>
-        <Provider store = {createStoreWithMiddleware(reducers)}>
-        <App />
-        <LoadingComponent>
+            <App />
             <Switch>
-            <Route path="/CreateAccount" component={CreateAccount}/>
-            <Route path="/Login" component={Login}/>
-            <AuthenticatedComponent>
-                <Route path="/:id" component={PostDetail}/>
-                <Route exact path="/" component={ListPosts}/>
-            </AuthenticatedComponent>
+                <Route path="/Forum/CreateAccount" component={CreateAccount} />
+                <Route path="/Forum/Login" component={Login} />
+                <Route path="/Forum" component={ListPosts}/>
             </Switch>
-        </LoadingComponent>
-        </Provider>
-    </Router>, document.getElementById('root'));
+    </Router>
+    </Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
