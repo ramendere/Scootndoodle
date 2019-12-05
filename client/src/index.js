@@ -13,7 +13,9 @@ import { Provider } from 'react-redux'
 import ListPosts from './components/Forum/Containers/ListPosts'
 import Login from './components/Forum/Containers/Login'
 import CreateAccount from './components/Forum/Containers/CreateAccount'
-
+import Loadingcomponent from './components/Forum/Containers/LoadingComponent'
+import AuthenticatedComponent from './components/Forum/Containers/AuthenticatedComponent'
+import PostDetail from './components/Forum/Containers/PostDetail';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
@@ -21,11 +23,16 @@ ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
     <Router>
             <App />
-            <Switch>
-                <Route path="/Forum/CreateAccount" component={CreateAccount} />
-                <Route path="/Forum/Login" component={Login} />
-                <Route path="/Forum" component={ListPosts}/>
-            </Switch>
+            <Loadingcomponent>
+                <Switch>
+                    <Route path="/Forum/CreateAccount" component={CreateAccount} />
+                    <Route path="/Forum/Login" component={Login} />
+                    <AuthenticatedComponent>
+                        <Route path="/Forum/:id" component={PostDetail}/>
+                        <Route exact path="/Forum" component={ListPosts}/>
+                    </AuthenticatedComponent>
+                </Switch>
+            </Loadingcomponent>
     </Router>
     </Provider>, document.getElementById('root'));
 

@@ -26,7 +26,16 @@ html {
   margin-bottom: 65px;
 }
 
-body {
-  background-color: #474647;
+.loading {
+  font-size: large;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: whitesmoke;
 }
 
+.post{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}

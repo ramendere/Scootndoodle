@@ -21,9 +21,7 @@ const App = () => {
         <Route exact path='/Cart' component={Cart} />
         <Route exact path='/Success' component={Congrats} />
         <Route exact path='/ShopPreview' component={ShopPreview} />
-        <Route exact path='/Forum' />
-        <Route exact path='/Forum/Login' />
-        <Route exact path='/Forum/CreateAccount' />
+        <Route path='/Forum' />
         {/* <Section
           title="Media"
           subtitle=''

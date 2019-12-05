@@ -11,29 +11,20 @@ import '../Styles/Forum.css';
 import _ from 'lodash';
 import PostCard from '../Components/PostCard'
 import { getUser, logout } from '../Actions/UserActions';
+import {Helmet} from 'react-helmet'
+import Link from 'react-router-dom/es/Link'
 
 class Forum extends Component {
-  componentWillMount() {
-    this.props.getPosts();
-    this.props.getUser();
-    if (this.props.user.loading === false && this.props.user.email === undefined) {
-      this.props.history.replace('/Forum/Login');
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.user.loading === false && nextProps.user.email === undefined) {
-      this.props.history.replace('/Forum/Login');
-    }
-  }
 
   renderPosts() {
     return _.map(this.props.posts, (post, key) => {
       return (
         <PostCard key={key}>
-          <h3 className="card-title">
-            {post.title}
-          </h3>
+          <Link to={`/Forum/${key}`}>
+            <h3 className="card-title">
+              {post.title}
+            </h3>
+          </Link>
           <p className="card-text">
             {post.body}
           </p>
@@ -56,7 +47,9 @@ class Forum extends Component {
     const { handleSubmit } = this.props;
     return (
       <div>
-        
+        <Helmet> 
+        <style>{'body { background-color: #474647; }'}</style>
+        </Helmet>
         <button className="btn-block btn-danger" onClick={() => {this.props.logout();}}>Sign out</button>
 
         <div className="container">
