@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 class AuthenticatedComponent extends Component {
   componentDidUpdate() {
     const { userLoading, user } = this.props;
-    if (userLoading === false && !user) {
+    if (userLoading === false && !user && (this.props.location.pathname === '/Forum' || this.props.location.pathname === '/forum' || this.props.location.pathname === '/Forum/' || this.props.location.pathname === '/forum/')) {
       this.props.history.push('/Forum/Login');
     }
   }
