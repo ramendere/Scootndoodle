@@ -3,7 +3,7 @@ let mongoose = require('mongoose'),
   router = express.Router();
 
 // product Model
-let productSchema = require('../models/product');
+let productSchema = require('../models/Product');
 
 // CREATE product
 router.route('/create-product').post((req, res, next) => {
