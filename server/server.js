@@ -18,7 +18,7 @@ const productRoute = require('../server/routes/product.route')
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.DB_URI || require('./config/config').uri, {
   useNewUrlParser: true
 }).then(() => {
   console.log('Database sucessfully connected!')
