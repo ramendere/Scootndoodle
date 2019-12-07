@@ -1,24 +1,14 @@
-/*const express = require('./config/express.js')
-
-// Use env port or default
-const port = process.env.PORT || 5000;
-
-const app = express.init()
-app.listen(port, () => console.log(`Server now running on port ${port}!`));
-*/
-
 let express = require('express');
 let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
-//let dbConfig = require('./config/config');
 
 // Express Route
-const productRoute = require('../server/routes/product.route')
+const productRoute = require('./routes/product.route')
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.DB_URI || require('./config/config').uri, {
   useNewUrlParser: true
 }).then(() => {
   console.log('Database sucessfully connected!')
