@@ -23,7 +23,7 @@ export default class Shop extends Component {
 
 
     <h>
-        Scoot n Doodle Shop
+       Dextedoodle Shop
     </h>
     <hr/>
 

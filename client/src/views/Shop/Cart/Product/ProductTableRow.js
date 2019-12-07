@@ -12,6 +12,8 @@ export default class ProductTableRow extends Component {
         super(props);
         this.deleteTracker = this.deleteTracker.bind(this);
 
+
+        
     }
 
     deleteTracker() {
@@ -21,11 +23,6 @@ export default class ProductTableRow extends Component {
             }).catch((error) => {
                 console.log(error)
             })
-
-         
-            
-   
-
     
     }
 
@@ -41,7 +38,15 @@ export default class ProductTableRow extends Component {
 
        
 
-             <table class="table bordered">
+            <table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Color</th>
+      <th scope="col">Price</th>
+      <th scope="col">Size</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
     
@@ -53,17 +58,6 @@ export default class ProductTableRow extends Component {
     </tr>
     </tbody>
 </table>
-
-
-
-
-
-
-
-
-
-
-    
 
         );
     }

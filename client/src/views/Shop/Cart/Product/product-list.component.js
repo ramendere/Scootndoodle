@@ -4,12 +4,16 @@ import ProductTableRow from './ProductTableRow';
 import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
 import {CartOverview} from '../CartOverview'
+import StripeCheckout from 'react-stripe-checkout';
 
+let total = 995;
 
 
 
 export default class CartList extends Component {
-
+  onToken = (token, addresses) => {
+    alert("Payment is Successful! Thank You!");
+};
   constructor(props) {
     super(props)
     this.state = {
@@ -70,9 +74,16 @@ export default class CartList extends Component {
           <div class="col-md-3">
 			<CartOverview/>
 			<div class="text-center">
-			<Link to="/payment">
-  <button className="add-to-cart btn btn-default" type="button">Proceed to Order</button>
-  </Link>
+			<StripeCheckout className={"center"}
+                       amount={total}
+                       billingAddress
+                        description="DexteDoodle Therapeutic Tool"
+                        locale="auto"
+                        name="DexteDoode.com"
+                        stripeKey="pk_test_1tLXq8tyKXWxDrUC1dJtkLVE00DaMRX9Ur"
+                        token={this.onToken}
+                       zipCode
+                    />
   </div>
   </div>   
         
