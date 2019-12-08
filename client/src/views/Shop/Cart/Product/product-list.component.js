@@ -64,6 +64,18 @@ export default class CartList extends Component {
   <div class="col-9">
     <div className="shop-container">
 		<div className="card">
+    <table class="table">
+     
+    <tr>
+    <td width="90px"  class="text-left"><b>Item</b></td>
+    <td width="90px"  class="text-left"><b>Color</b></td>
+    <td width="90px"  class="text-left"><b>Size</b></td>
+    <td width="90px"  class="text-left"><b>Price</b></td>
+    <td width="90px"  class="text-left"><b>Action</b></td>
+    </tr>
+    
+
+  </table>
         </div>   
 
   

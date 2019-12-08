@@ -1,7 +1,6 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
 import './PaymentTest.css'
-//import { PayPalButton } from 'react-paypal-button-v2';
 import StripeCheckout from 'react-stripe-checkout';
 
 
@@ -15,23 +14,22 @@ class CartView extends React.Component {
 
     constructor(props) {
         super(props);
-    
     }
-  
 
+    //response after payment completed
     onToken = (token, addresses) => {
         alert("Payment is Successful! Thank You!");
     };
     render() {
 
         return(
-            <Container className = 'container'>
+            <Container className = 'container'>         
                 <div>
-                    <nav className='navBar'>
+                    < nav className='navBar'>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item"><a href={"/Home"}>Home</a></li>
-                            <li className="breadcrumb-item "><a href={"/ShopPreview"}>Shop</a></li>
-                            <li className="breadcrumb-item active"><a href="#">Cart</a></li>
+                            <li className="breadcrumb-item "><a href={"/create-product"}>Shop</a></li>
+                            <li className="breadcrumb-item active"><a href="/product-list">Cart</a></li>
                         </ol>
                     </nav>
                     <h1 className='color'>
@@ -39,7 +37,10 @@ class CartView extends React.Component {
                     </h1>
                     <hr/>
 
-                    <table class="table bordered">
+
+
+
+<table class="table bordered">
   <tbody>
     <tr>
     
