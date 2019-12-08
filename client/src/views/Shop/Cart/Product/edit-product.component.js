@@ -12,22 +12,11 @@ export default class EditCart extends Component {
 
   constructor(props) {
     super(props)
-
-    this.onChangeQuantity = this.onChangeQuantity.bind(this);
-
-
-
-
-
     this.onSubmit = this.onSubmit.bind(this);
 
     // State
     this.state = {
      size:'',
-      quantity:''
-    
-      
-      
     }
   }
 

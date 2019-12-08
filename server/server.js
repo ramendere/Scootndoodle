@@ -1,4 +1,5 @@
-let express = require('express');
+const path = require('path'),
+express = require('express');
 let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
@@ -33,13 +34,17 @@ const server = app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
 
-// 404 Error
-app.use((req, res, next) => {
-  next(createError(404));
-});
 
 app.use(function (err, req, res, next) {
   console.error(err.message);
   if (!err.statusCode) err.statusCode = 500;
   res.status(err.statusCode).send(err.message);
+});
+
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+}
+
+app.get('*', (request, response) => {
+	response.sendFile(path.resolve(__dirname, '../client/build/index.html'));
 });

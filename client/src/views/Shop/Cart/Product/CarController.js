@@ -5,6 +5,8 @@ import axios from 'axios';
 import Card from 'react-bootstrap/Card'
 import './ProductTableRow.css'
 import productPhotos from '../DSC_0056.JPG'
+import '../Cart.css'
+
 
 
 
@@ -71,13 +73,22 @@ export default class CarController extends Component {
     
   })
  // Redirect to List 
- this.props.history.push('/create-product')
+this.props.history.push('/create-product')
     
   }
 
   render() {
     return (
     <div className="form-wrapper">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item active">Shop</li>
+</ol>
+
+
+<a href="/create-product" class="previous">&laquo; Back to Shop</a>
+<br/>
       <Card>
       <Form onSubmit={this.onSubmit}>
 
@@ -126,18 +137,20 @@ export default class CarController extends Component {
           <Form.Group controlId="Name">
             <Form.Label>Size </Form.Label>
             <br></br>
-            <select type="text" value={this.state.size} onChange={this.onChangeProductSize}>
-              <option value="S">Small</option>
+            <select type="text" value={this.state.size} onChange={this.onChangeProductSize} >
+            <option value="" selected disabled hidden>Please select a size</option>
+            <option value="S">Small</option>
               <option value="M">Medium</option>
               <option value="L">Large</option>
           </select>
           </Form.Group>
+          <Button className="add-cart" type="submit">
+          Add to Cart
+        </Button>
 
           </div></div>
   
-        <Button variant="danger" size="lg" block="block" type="submit">
-          Add to Cart
-        </Button>
+       
       </Form>
 
       </Card>
