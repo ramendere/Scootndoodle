@@ -3,11 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "cors": "^2.8.5",
-=======
     "npm-install-missing": "^0.1.4",
->>>>>>> c197dd9fcf5a5dd8e5da772f12816e69ae821528
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-scripts": "3.1.2"
