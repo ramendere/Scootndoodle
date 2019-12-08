@@ -58,7 +58,7 @@ export default class CarController extends Component {
     };
 
 
-    axios.post('http://localhost:5000/products/create-product',trackerObject)
+    axios.post('https://dextedoodle.herokuapp.com/products/create-product',trackerObject)
       .then(res => console.log(res.data));
 
     this.setState({ 

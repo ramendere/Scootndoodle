@@ -15,7 +15,7 @@ export default class ProductTableRow extends Component {
     }
 
     deleteTracker() {
-        axios.delete('http://localhost:5000/products/delete-product/' + this.props.obj._id)
+        axios.delete('https://dextedoodle.herokuapp.com/products/delete-product/' + this.props.obj._id)
             .then((res) => {
                 console.log('product successfully deleted!')
             }).catch((error) => {
