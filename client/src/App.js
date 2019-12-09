@@ -35,6 +35,7 @@ const App = () => {
         <Route exact path='/CarController' component={CarController} />
         <Route exact path='/create-product' component={mainCart} />
         <Route exact path='/product-list' component={CartList} />
+        <Route path='/Forum' />
         <Route component={NotFound}/>
       </Switch>
   );
